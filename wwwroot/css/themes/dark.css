@@ -1,0 +1,16 @@
+﻿:root {
+    --page-bg: black;
+    --color: yellowgreen;
+    --text-color: yellowgreen;
+    --font: monospace;
+}
+
+#categories {
+    border: 1px solid var(--color);
+    padding: 2%;
+}
+
+#latest {
+    border: 1px solid var(--color);
+    padding: 2%;
+}
