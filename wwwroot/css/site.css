@@ -37,18 +37,18 @@ nav {
     color: var(--text-color);
 }
 
-.subcategories {
+.forum {
     border-top: 1px solid var(--color);
 }
 
-.subcategories > li {
+.forum > li {
     border-bottom: 1px solid black;
     padding-top: 5px;
     padding-bottom: 5px;
     list-style-type: none;
 }
 
-.subcategories-body {
+.forum-info {
     width: 100%;
 }
 
@@ -57,8 +57,22 @@ td {
     width: 50%;
 }
 
-.recent-posts-list {
+.recent-threads-list {
     list-style-type: square;
+}
+
+.post {
+    table-layout: fixed;
+    margin-top: 10px;
+    border-top: 1px solid black;
+}
+
+.post td {
+    padding: 10px;
+}
+
+.reply-box {
+    margin-top: 25px;    
 }
 
 app {
@@ -80,8 +94,6 @@ footer {
     flex: auto;
     margin-left: 5vw;
     margin-right: 5vw;
-    height: 100vh;
-    justify-content: space-between;
 }
 
 .content {
