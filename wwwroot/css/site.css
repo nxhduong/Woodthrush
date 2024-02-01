@@ -1,5 +1,5 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
-@import url('themes/dark.css');
+@import url('themes/default.css');
 
 html, body {
     font-family: var(--font);
@@ -9,6 +9,7 @@ html, body {
 
 a, .btn-link {
     color: #0366d6;
+    text-decoration: none;
 }
 
 .btn-primary {
@@ -31,13 +32,35 @@ nav {
     display: flex;
 }
 
-#categories {
+.categories {
     width: 70%;
+    color: var(--text-color);
 }
 
-#category > #body {
+.subcategories {
     border-top: 1px solid var(--color);
 }
+
+.subcategories > li {
+    border-bottom: 1px solid black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    list-style-type: none;
+}
+
+.subcategories-body {
+    width: 100%;
+}
+
+td {
+    vertical-align: top;
+    width: 50%;
+}
+
+.recent-posts-list {
+    list-style-type: square;
+}
+
 app {
     position: relative;
     display: flex;

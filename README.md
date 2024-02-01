@@ -1,9 +1,16 @@
 ﻿# Woodthrush
-Woodthrush is a simple forum software built on Blazor.
+Woodthrush is a simple forum software built on Blazor. It is minimal and highly-customizable.
 ## Specifications
-.NET 8
+- Runs on .NET 8
+- Uses SQLite as database
 ## Features
+- Categorized discussions
+- Personal messaging
+- For admins: manage threads, users,...
+- Customizable UI with themes
+
+*and more...*
 ## Usage
-Please refer to [DOCUMENTATION.md]("/DOCUMENTATION.md") for more info.
+Please refer to [DOCUMENTATION.md]("/DOCUMENTATION.md") for further information.
 ## Contributions
-Contributions are appreciated.
+All suggestions are greatly appreciated.

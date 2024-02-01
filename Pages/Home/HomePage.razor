@@ -1,30 +1,41 @@
 ﻿@page "/"
 
 <div class="d-flex flex-row justify-content-between h-100">
-    <div id="categories" class="h-75 d-flex flex-column">
-        <div id="category">
-            <h3>Title</h3>
-            <div id="body">
-                <ul>
-                    <li><h5>Sub cat 1</h5></li>
-                    <li><h5>Sub cat 2</h5></li>
-                </ul>
-            </div>
-        </div>
-        <div id="category">
-            <h2>Title</h2>
-            <div id="body">
-                <ul>
-                    <li><h5>Sub cat 1</h5></li>
-                    <li><h5>Sub cat 2</h5></li>
-                </ul>
-            </div>
+    <div class="categories h-75 d-flex flex-column">
+        <div class="category">
+            <h4><strong>Category Title</strong></h4>
+            <ul class="subcategories">
+                <li>
+                    <h4><a href="">Subcategory</a></h4>
+                    <table class="subcategories-body">
+                        <tr>
+                            <td>Description</td>
+                            <td>
+                                <a href="">Newest post</a>
+                                <p><a href="">Author</a> - 0:00 00/00/0000</p>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <h4><a href="">Subcategory</a></h4>
+                    <table class="subcategories-body">
+                        <tr>
+                            <td>Description</td>
+                            <td>
+                                <a href="">Newest post</a>
+                                <p><a href="">Author</a> - 0:00 00/00/0000</p>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+            </ul>
         </div>
     </div>
-    <div id="latest" class="w-25 h-75">
-        <h3>Latest posts</h3>
-        <ul>
-            <li>Post 1</li>
+    <div class="recent-posts w-25 h-75">
+        <h4><strong>Recent posts</strong></h4>
+        <ul class="recent-posts-list">
+            <li><a href="">Newest post</a></li>
         </ul>
     </div>
 </div>
