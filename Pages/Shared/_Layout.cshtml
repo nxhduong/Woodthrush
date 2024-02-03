@@ -1,9 +1,13 @@
 @using Microsoft.AspNetCore.Hosting
+@using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.Mvc.ViewEngines
 @inject IWebHostEnvironment Environment
 @inject ICompositeViewEngine Engine
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,7 +27,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <!--<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" href="~/">Woodthrush</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -31,22 +35,69 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    @{
+                    @@{
                         var result = Engine.FindView(ViewContext, "_LoginPartial", isMainPage: false);
                     }
-                    @if (result.Success)
+                    @@if (result.Success)
                     {
                         await Html.RenderPartialAsync("_LoginPartial");
                     }
                     else
                     {
                         throw new InvalidOperationException("The default Identity UI layout requires a partial view '_LoginPartial' " +
-                            "usually located at '/Pages/_LoginPartial' or at '/Views/Shared/_LoginPartial' to work. Based on your configuration " +
-                            $"we have looked at it in the following locations: {System.Environment.NewLine}{string.Join(System.Environment.NewLine, result.SearchedLocations)}.");
+                                                            "usually located at '/Pages/_LoginPartial' or at '/Views/Shared/_LoginPartial' to work. Based on your configuration " +
+                                                            $"we have looked at it in the following locations: {System.Environment.NewLine}{string.Join(System.Environment.NewLine, result.SearchedLocations)}.");
                     }
                 </div>
             </div>
         </nav>
+        <partial name="_LoginPartial"/>-->
+        <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/">
+                        <strong>Woodthrush</strong>
+                    </a>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Forums</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex justify-content-between" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="background-color: var(--page-bg)">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    <ul class="navbar-nav mx-4">
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+                                <a id="manage" class="nav-link text-dark" href="/Identity/Account/ManageIndex" 
+                                   asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                            </li>
+                            <li class="nav-item">
+                                <form id="logoutForm" class="form-inline" href="/Identity/Account/Logout" 
+                                      asp-area="Identity" asp-page="/Account/Logout" 
+                                      asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
+                                    <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0">Logout</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" id="register" href="/Identity/Account/Register" 
+                                   asp-area="Identity" asp-page="/Account/Register">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" id="login" href="/Identity/Account/Login" 
+                                   asp-area="Identity" asp-page="/Account/Login">Login</a>
+                            </li>
+                        }
+                    </ul>
+                    <div>
+                        <span class="oi oi-brush"></span>
+                    </div>
+                </div>
+            </nav>
     </header>
 
     <div class="container">
@@ -55,6 +106,7 @@
             @RenderBody()
         </main>
     </div>
+
     <footer class="footer border-top pl-3 text-muted">
         <div class="container">
         &copy; 2024 - Woodthrush
